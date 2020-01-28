@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: './src/index.js',
@@ -31,5 +32,6 @@ module.exports = {
     ],
     devServer:{
         port:9000
-    }
+    },
+    mode : devMode ? 'development' : 'production'
 };
