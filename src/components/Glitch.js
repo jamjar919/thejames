@@ -5,9 +5,9 @@ import uuid from 'uuid/v4';
 
 import './app.scss';
 
-const REFRESH = 50;
+const REFRESH = 10;
 const MIN_CLIP = 50;
-const MAX_TRANSFORM = 50;
+const MAX_TRANSFORM = 20;
 
 const getFloatInRange = (min, max) =>  Math.random() * (max - min) + min
 
