@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Glitch from './Glitch';
 
+import './normalize.scss';
 import './app.scss';
 
 const App = () => (
     <div className="container">
-        React yayayaya help what
-        <div className="something">
-            dkasdkasd
-        </div>
+        <Glitch>James Paterson</Glitch>
     </div>
 );
 
