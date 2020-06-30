@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 $aphexScale: 1.5rem;
+$slideInDuration: 3;
 
 .aphex-container {
   position: relative;
   display: flex;
   flex-direction: column;
   transform: rotate(-45deg);
+  margin-top: $aphexScale * -6; // Properly center as stripes aren't in the DOM
 }
 
 .aphex-header {
@@ -44,18 +46,60 @@ $aphexScale: 1.5rem;
   position: absolute;
   left: -100vw;
 
-  &.yellow { background-color: #ebb904; }
+  &.yellow {
+    background-color: #ebb904;
+    animation-name: aphex-stripe-slidein;
+    animation-delay: 0s;
+    animation-duration: #{$slideInDuration}s;
+    transform-origin: left;
+  }
   &.orange { background-color: #dd4401; }
   &.red { background-color: #db0020; }
   &.purple { background-color: #ae0076; }
   &.blue { background-color: #01479a; }
   &.green { background-color: #019935; }
 
-  $lines: 1, 2, 3, 4, 5, 6;
+  $lines: 2, 3, 4, 5, 6;
   @each $n in $lines {
     &:nth-child(#{$n}) {
       top: ($n - 1) * $aphexScale;
+
+      $widenDelay: $slideInDuration + ($n - 4) * 0.15;
+
+      animation-name: aphex-stripe-gone, aphex-stripes-widen;
+      animation-delay: 0s, #{$widenDelay}s;
+      animation-duration: #{$widenDelay}s, 0.5s;
+      transform-origin: top;
     }
   }
 }
 
+@keyframes aphex-stripe-gone {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes aphex-stripe-slidein {
+  from {
+    transform: scale(0, 1);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes aphex-stripes-widen {
+  from {
+    transform: scale(1, 0);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
