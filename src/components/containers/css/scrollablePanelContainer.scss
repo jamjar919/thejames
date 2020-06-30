@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.dummy-panel {
+  height: 100vh;
+  margin-bottom: 50px;
+}
+
+.panel:not(.current-panel) {
+  visibility: hidden;
+}
+
+.current-panel {
+  visibility: visible;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+}

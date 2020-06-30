@@ -1,19 +1,25 @@
 import React from 'react';
 
+import ScrollablePanelsContainer from "./containers/ScrollablePanelContainer";
 import Aphex from "./effects/Aphex";
+import Supertape from "./effects/Supertape";
 
 import './normalize.scss';
 import './app.scss';
 
 const App = () => (
-    <div className="fullpage">
-        <div className="centeredContainer">
-            <Aphex
-                title={"Aphex"}
-                subtitle={"Videocassette"}
-            />
-        </div>
-    </div>
+    <ScrollablePanelsContainer>
+        <Aphex
+            title="James"
+            subtitle="Paterson"
+        />
+        <Supertape
+            title="Developer"
+            subtitle={<a href="https://thejamespaterson.com/cv.pdf">CV</a>}
+            subtitleAppendix="Full stack web devel"
+            footer="Tripadvisor Exp"
+        />
+    </ScrollablePanelsContainer>
 );
 
 export default App;

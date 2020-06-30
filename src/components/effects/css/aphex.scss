@@ -1,8 +1,10 @@
+@import "./animations";
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
 $aphexScale: 1.5rem;
-$slideInDuration: 3;
+$slideInDuration: 1;
 
 .aphex-container {
   position: relative;
@@ -15,12 +17,11 @@ $slideInDuration: 3;
 .aphex-header {
   font-size: $aphexScale;
   margin: 0 auto 0.5rem auto;
-  font-family: Helvetica, sans-serif;
   text-transform: uppercase;
 
   .aphex-title {
     font-family: 'Krona One', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.1em;
     font-weight: 800;
     padding-left: 0.5em;
     color: #e5dbd1;
@@ -40,66 +41,79 @@ $slideInDuration: 3;
   position: relative;
 }
 
+$lines: 2, 3, 4, 5, 6;
+
 .aphex-stripe {
   width: 200vw;
   height: $aphexScale;
   position: absolute;
   left: -100vw;
 
-  &.yellow {
-    background-color: #ebb904;
-    animation-name: aphex-stripe-slidein;
-    animation-delay: 0s;
-    animation-duration: #{$slideInDuration}s;
-    transform-origin: left;
-  }
+  &.yellow { background-color: #ebb904; }
   &.orange { background-color: #dd4401; }
   &.red { background-color: #db0020; }
   &.purple { background-color: #ae0076; }
   &.blue { background-color: #01479a; }
   &.green { background-color: #019935; }
 
-  $lines: 2, 3, 4, 5, 6;
   @each $n in $lines {
     &:nth-child(#{$n}) {
       top: ($n - 1) * $aphexScale;
-
-      $widenDelay: $slideInDuration + ($n - 4) * 0.15;
-
-      animation-name: aphex-stripe-gone, aphex-stripes-widen;
-      animation-delay: 0s, #{$widenDelay}s;
-      animation-duration: #{$widenDelay}s, 0.5s;
-      transform-origin: top;
     }
   }
 }
 
-@keyframes aphex-stripe-gone {
-  from {
-    transform: scale(0);
+/* Animating in */
+.current-panel:not(.fading-panel) {
+  .aphex-header {
+    animation-name: stripe-gone, stripe-widen;
+    animation-delay: 0s, #{$slideInDuration}s;
+    animation-duration: #{$slideInDuration}s, 0.5s;
   }
 
-  to {
-    transform: scale(0);
+  .aphex-stripe {
+    &:nth-child(1) {
+      animation-name: stripe-slidein-from-left;
+      animation-duration: #{$slideInDuration}s;
+      animation-timing-function: linear;
+      transform-origin: left;
+    }
+
+    @each $n in $lines {
+      &:nth-child(#{$n}) {
+        $widenDelay: $slideInDuration + (($n - 2) * 0.15);
+
+        animation-name: stripe-gone, stripe-widen;
+        animation-delay: 0s, #{$widenDelay}s;
+        animation-duration: #{$widenDelay}s, 0.5s;
+        transform-origin: top;
+      }
+    }
   }
 }
 
-@keyframes aphex-stripe-slidein {
-  from {
-    transform: scale(0, 1);
+/* Animating out */
+.fading-panel {
+  .aphex-header {
+    animation-name: stripe-fly-up-and-out;
+    animation-delay: 0s;
+    animation-duration: 1.5s;
   }
 
-  to {
-    transform: scale(1, 1);
+  .aphex-stripe {
+    animation-delay: 0s;
+    animation-duration: 1.5s;
+
+    &:nth-child(1) {
+      animation-name: stripe-fly-up-and-out;
+    }
+
+    @each $n in $lines {
+      &:nth-child(#{$n}) {
+        animation-name: stripe-fly-down-and-out;
+        animation-delay: #{(6 - $n) * 1/6}s;
+      }
+    }
   }
 }
 
-@keyframes aphex-stripes-widen {
-  from {
-    transform: scale(1, 0);
-  }
-
-  to {
-    transform: scale(1, 1);
-  }
-}

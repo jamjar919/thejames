@@ -1,0 +1,130 @@
+@keyframes stripe-gone {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes stripe-slidein-from-left {
+  from {
+    transform: scale(0, 1);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes stripe-slidein-from-right {
+  from {
+    transform: translateX(-100vw);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes stripe-slideout-to-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100vw) scaleX(0);
+  }
+}
+
+@keyframes stripe-slideout-to-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100vw) scaleX(0);
+  }
+}
+
+@keyframes stripe-widen {
+  from {
+    transform: scale(1, 0);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes stripe-shrink {
+  from {
+    transform: scale(1, 1);
+  }
+
+  to {
+    transform: scale(1, 0);
+  }
+}
+
+@keyframes stripe-rotate-out {
+  from {
+    transform: rotate(0deg);
+    transform-origin: left;
+  }
+
+  to {
+    transform: rotate(90deg);
+    transform-origin: left;
+  }
+}
+
+@keyframes stripe-fly-up-and-in {
+  from {
+    transform: translateY(-100vh);
+    transform-origin: bottom;
+  }
+
+  to {
+    transform: translateY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes stripe-fly-down-and-in {
+  from {
+    transform: translateY(100vh);
+    transform-origin: bottom;
+  }
+
+  to {
+    transform: translateY(0);
+    transform-origin: bottom;
+  }
+
+}
+
+@keyframes stripe-fly-up-and-out {
+  from {
+    transform: translateY(0);
+    transform-origin: bottom;
+  }
+
+  to {
+    transform: translateY(-100vh);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes stripe-fly-down-and-out {
+  from {
+    transform: translateY(0);
+    transform-origin: bottom;
+  }
+
+  to {
+    transform: translateY(100vh);
+    transform-origin: bottom;
+  }
+}
