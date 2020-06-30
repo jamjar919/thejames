@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+$aphexScale: 1.5rem;
+
+.aphex-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(-45deg);
+}
+
+.aphex-header {
+  font-size: $aphexScale;
+  margin: 0 auto 0.5rem auto;
+  font-family: Helvetica, sans-serif;
+  text-transform: uppercase;
+
+  .aphex-title {
+    font-family: 'Krona One', sans-serif;
+    font-size: 1.5em;
+    font-weight: 800;
+    padding-left: 0.5em;
+    color: #e5dbd1;
+    transform: scale(1.5, 1);
+    transform-origin: left;
+  }
+
+  .aphex-subtitle {
+    font-family: 'Anton', sans-serif;
+    font-size: 3em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #e5dbd1;
+  }
+}
+
+.aphex-stripes {
+  position: relative;
+}
+
+.aphex-stripe {
+  width: 200vw;
+  height: $aphexScale;
+  position: absolute;
+  left: -100vw;
+
+  &.yellow { background-color: #ebb904; }
+  &.orange { background-color: #dd4401; }
+  &.red { background-color: #db0020; }
+  &.purple { background-color: #ae0076; }
+  &.blue { background-color: #01479a; }
+  &.green { background-color: #019935; }
+
+  $lines: 1, 2, 3, 4, 5, 6;
+  @each $n in $lines {
+    &:nth-child(#{$n}) {
+      top: ($n - 1) * $aphexScale;
+    }
+  }
+}
+

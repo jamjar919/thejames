@@ -1,18 +1,19 @@
 import React from 'react';
-import Glitch from './effects/Glitch';
-import Crt from './effects/Crt'
+
+import Aphex from "./effects/Aphex";
 
 import './normalize.scss';
 import './app.scss';
 
 const App = () => (
-    <Crt>
-        <div className="fullpage">
-            <div className="centeredContainer">
-                <Glitch>://james paterson</Glitch>
-            </div>
+    <div className="fullpage">
+        <div className="centeredContainer">
+            <Aphex
+                title={"Aphex"}
+                subtitle={"Videocassette"}
+            />
         </div>
-    </Crt>
+    </div>
 );
 
 export default App;
