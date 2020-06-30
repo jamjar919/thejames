@@ -1,8 +1,8 @@
 import React from 'react';
 
 import ScrollablePanelsContainer from "./containers/ScrollablePanelContainer";
-import Aphex from "./effects/Aphex";
-import Supertape from "./effects/Supertape";
+import Aphex from "./videotapes/Aphex";
+import Supertape from "./videotapes/Supertape";
 
 import './normalize.scss';
 import './app.scss';
