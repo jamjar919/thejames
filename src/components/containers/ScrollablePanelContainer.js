@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
-
-import useScrollPosition from "../../hooks/useScrollPosition";
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
 import "./css/scrollablePanelContainer.scss";
 
