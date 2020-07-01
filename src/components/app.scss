@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+#app {
+    overflow: hidden;
+}
+
 body {
     background-color: $background;
 }

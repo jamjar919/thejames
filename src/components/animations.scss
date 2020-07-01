@@ -10,11 +10,11 @@
 
 @keyframes stripe-slidein-from-left {
   from {
-    transform: scale(0, 1);
+    transform: translateX(100vw);
   }
 
   to {
-    transform: scale(1, 1);
+    transform: translateX(0);
   }
 }
 
@@ -82,7 +82,7 @@
 
 @keyframes stripe-fly-up-and-in {
   from {
-    transform: translateY(-100vh);
+    transform: translateY(100vh);
     transform-origin: bottom;
   }
 

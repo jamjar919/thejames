@@ -6,6 +6,7 @@ import Supertape from "./videotapes/Supertape";
 
 import './normalize.scss';
 import './app.scss';
+import Dynamicron from "./videotapes/Dynamicron";
 
 const App = () => (
     <ScrollablePanelsContainer>
@@ -19,6 +20,7 @@ const App = () => (
             subtitleAppendix="Full stack web devel"
             footer="Tripadvisor Exp"
         />
+        <Dynamicron />
     </ScrollablePanelsContainer>
 );
 

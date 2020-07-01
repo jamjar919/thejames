@@ -1,0 +1,82 @@
+@import "src/components/animations";
+
+.dynamicron-whitebox {
+    display: flex;
+    background: #FFFFFF;
+    height: 80vh;
+}
+
+.dynamicron-container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    margin: auto;
+}
+
+.dynamicron-header {
+    margin-left: 30vw;
+}
+
+.dynamicron-title {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #131216;
+    padding-left: 0.4rem;
+}
+
+.dynamicron-subtitle {
+    font-size: 5rem;
+    color: #131216;
+    letter-spacing: -0.2rem;
+}
+
+.dynamicron-stripe {
+    height: 2rem;
+    width: 100vw;
+
+    &.yellow { background-color: #F7AF02; }
+    &.red { background-color: #F62D2A; }
+    &.crimson { background-color: #E7083F; }
+    &.sunset { background-color: #B90852; }
+    &.purple { background-color: #6B1B5A; }
+}
+
+$lines: 1, 2, 3, 4, 5;
+
+/* Animating in */
+.current-panel:not(.fading-panel) {
+    .dynamicron-whitebox {
+        animation-name: stripe-slidein-from-left;
+        animation-timing-function: linear;
+        transform-origin: left;
+        animation-duration: 1s;
+    }
+
+    .dynamicron-stripe {
+        @each $n in $lines {
+            &:nth-child(#{$n}) {
+                $widenDelay: ($n * 1/5);
+
+                animation-name: stripe-gone, stripe-fly-up-and-in;
+                animation-delay: 0s, #{$widenDelay}s;
+                animation-duration: #{$widenDelay}s, 1s;
+            }
+        }
+    }
+}
+
+.fading-panel {
+    .dynamicron-stripe {
+        @each $n in $lines {
+            &:nth-child(#{$n}) {
+                $widenDelay: ($n * 1/5);
+
+                animation-name: stripe-gone, stripe-rotate-out;
+                animation-delay: 0s, #{$widenDelay}s;
+                animation-duration: #{$widenDelay}s, 1s;
+            }
+        }
+    }
+}
