@@ -9,7 +9,7 @@ import './app.scss';
 import Dynamicron from "./videotapes/Dynamicron";
 
 const App = () => (
-    <ScrollablePanelsContainer>
+    <ScrollablePanelsContainer withMenu>
         <Aphex
             title="James"
             subtitle="Paterson"
@@ -29,7 +29,7 @@ const App = () => (
                 <a href="https://www.linkedin.com/in/james-paterson-a0114023/">Linkedin</a>,
                 <a href="https://stackoverflow.com/users/2453542/james-paterson">StackOverflow</a>,
                 <>
-                        <a href="https://thejamespaterson.com/scripts">Scripts</a>, or <a href="https://thejamespaterson.com/projects">Projects</a>
+                    <a href="https://thejamespaterson.com/scripts">Scripts</a>, or <a href="https://thejamespaterson.com/projects">Projects</a>
                 </>
             ]}
         />

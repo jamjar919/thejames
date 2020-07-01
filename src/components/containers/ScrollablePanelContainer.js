@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
+import ScrollablePanelMenu from "./ScrollablePanelMenu";
+
 import "./css/scrollablePanelContainer.scss";
 
 const PANEL_LOADING_DELAY = 1250; // ms
 
-const ScrollablePanelsContainer = ({ children }) => {
+const ScrollablePanelsContainer = ({ children, withMenu }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [scrollIndex, setScrollIndex] = useState(0);
 
@@ -39,6 +41,13 @@ const ScrollablePanelsContainer = ({ children }) => {
 
     return (
         <>
+            { withMenu &&
+                <ScrollablePanelMenu
+                    numPanels={children.length}
+                    activePanel={scrollIndex}
+                    onClick={(panelIndex) => { setScrollIndex(panelIndex); }}
+                />
+            }
             <div className="dummy-panel" /> {/* spacing for the first child */}
             {
                 React.Children.map(children, (child, index) => (
@@ -54,7 +63,12 @@ const ScrollablePanelsContainer = ({ children }) => {
 };
 
 ScrollablePanelsContainer.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node).isRequired
+    children: PropTypes.arrayOf(PropTypes.node).isRequired,
+    withMenu: PropTypes.bool
+};
+
+ScrollablePanelsContainer.defaultProps = {
+    withMenu: false
 };
 
 export default ScrollablePanelsContainer;
