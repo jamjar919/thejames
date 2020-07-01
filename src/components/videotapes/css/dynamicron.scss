@@ -1,5 +1,7 @@
 @import "src/components/animations";
 
+$stripePadding : 40vw;
+
 .dynamicron-whitebox {
     display: flex;
     background: #FFFFFF;
@@ -16,7 +18,7 @@
 }
 
 .dynamicron-header {
-    margin-left: 30vw;
+    margin-left: $stripePadding;
 }
 
 .dynamicron-title {
@@ -33,8 +35,12 @@
 }
 
 .dynamicron-stripe {
+    color: #FFFFEE;
+    font-size: 1.5rem;
+    line-height: 2rem;
     height: 2rem;
     width: 100vw;
+    padding-left: $stripePadding;
 
     &.yellow { background-color: #F7AF02; }
     &.red { background-color: #F62D2A; }
@@ -67,16 +73,12 @@ $lines: 1, 2, 3, 4, 5;
     }
 }
 
+/* Animating out */
 .fading-panel {
-    .dynamicron-stripe {
-        @each $n in $lines {
-            &:nth-child(#{$n}) {
-                $widenDelay: ($n * 1/5);
-
-                animation-name: stripe-gone, stripe-rotate-out;
-                animation-delay: 0s, #{$widenDelay}s;
-                animation-duration: #{$widenDelay}s, 1s;
-            }
-        }
+    .dynamicron-whitebox {
+        animation-name: stripe-slideout-to-right;
+        animation-timing-function: linear;
+        transform-origin: left;
+        animation-duration: 1.25s;
     }
 }

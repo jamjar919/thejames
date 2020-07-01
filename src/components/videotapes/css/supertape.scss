@@ -87,7 +87,7 @@ $supertapeScale: 1rem;
       animation-name: stripe-gone, stripe-widen;
       animation-timing-function: ease;
       animation-delay: 0s, 1s;
-      animation-duration: 1s, 1s;
+      animation-duration: 1s, 0.25s;
     }
 
     &:nth-child(1) {

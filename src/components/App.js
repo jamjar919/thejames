@@ -20,7 +20,19 @@ const App = () => (
             subtitleAppendix="Full stack web devel"
             footer="Tripadvisor Exp"
         />
-        <Dynamicron />
+        <Dynamicron
+            title={"From across the web"}
+            subtitle={"Links"}
+            lines={[
+                <a href="https://thejamespaterson.com/cv.pdf">CV</a>,
+                <a href="https://github.com/jamjar919">Github</a>,
+                <a href="https://www.linkedin.com/in/james-paterson-a0114023/">Linkedin</a>,
+                <a href="https://stackoverflow.com/users/2453542/james-paterson">StackOverflow</a>,
+                <>
+                        <a href="https://thejamespaterson.com/scripts">Scripts</a>, or <a href="https://thejamespaterson.com/projects">Projects</a>
+                </>
+            ]}
+        />
     </ScrollablePanelsContainer>
 );
 
