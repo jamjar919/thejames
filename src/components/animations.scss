@@ -10,7 +10,7 @@
 
 @keyframes stripe-slidein-from-left {
   from {
-    transform: translateX(100vw);
+    transform: translateX(-200vw);
   }
 
   to {
@@ -20,7 +20,7 @@
 
 @keyframes stripe-slidein-from-right {
   from {
-    transform: translateX(-100vw);
+    transform: translateX(200vw);
   }
 
   to {
