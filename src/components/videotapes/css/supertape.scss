@@ -25,7 +25,10 @@ $supertapeScale: 1rem;
 }
 
 .supertape-subtitle {
+  display: flex;
   color: #E4BC07;
+  line-height: 40px;
+  margin-bottom: -15px;
 }
 
 .supertape-footer {
@@ -60,7 +63,7 @@ $supertapeScale: 1rem;
   line-height: 1;
 
   .supertape-subtitle-hour {
-    padding-left: 0.5em;
+    padding-left: 1em;
     font-size: 1.5rem;
 
     @include below('mobile') {

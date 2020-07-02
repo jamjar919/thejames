@@ -9,7 +9,7 @@ import "./css/scrollablePanelContainer.scss";
 
 const PANEL_LOADING_DELAY = 1250; // ms
 const DEBOUNCE_DELAY = 0; //ms
-let id;
+const DOCUMENT_HEIGHT = window.innerHeight;
 
 const ScrollablePanelsContainer = ({ children, withMenu }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -17,25 +17,25 @@ const ScrollablePanelsContainer = ({ children, withMenu }) => {
     const [scrollIndex, setScrollIndex] = useState(0);
 
     const switchToPanel = (panelId) => {
-        setIsLoading(true);
-        setLoadingPanel(panelId);
-        setTimeout(() => {
-            const documentHeight = window.innerHeight;
-            window.scroll(0, documentHeight * panelId * 1.5);
-            setScrollIndex(panelId);
-            setIsLoading(false);
-        }, PANEL_LOADING_DELAY);
+        if (panelId < children.length) {
+            setIsLoading(true);
+            setLoadingPanel(panelId);
+            setTimeout(() => {
+                window.scroll(0, DOCUMENT_HEIGHT * panelId * 1.5);
+                setScrollIndex(panelId);
+                setIsLoading(false);
+            }, PANEL_LOADING_DELAY);
+        }
     };
 
     useScrollPosition(({ prevPos, currPos }) => {
-        const documentHeight = window.innerHeight;
         const scrollPos = -1 * currPos.y;
-        const newScrollIndex = Math.floor(Math.abs(scrollPos / documentHeight));
+        const newScrollIndex = Math.floor(Math.abs(scrollPos / DOCUMENT_HEIGHT));
 
         if (newScrollIndex !== scrollIndex) {
             switchToPanel(newScrollIndex);
         }
-    }, [id, scrollIndex, isLoading, loadingPanel], null, true, DEBOUNCE_DELAY);
+    }, [scrollIndex, isLoading, loadingPanel], null, true, DEBOUNCE_DELAY);
 
     const getPanelClassName = (index, isLoading) => {
         const isCurrentPanel = index === scrollIndex;
