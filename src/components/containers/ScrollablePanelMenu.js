@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import ClassNames from 'classnames';
 
 import './css/scrollablePanelMenu.scss'
 
-const ScrollablePanelMenu = ({ numPanels, activePanel, onClick }) => {
+const ScrollablePanelMenu = ({ numPanels, activePanel, loadingPanel, onClick }) => {
 
     const range = [...Array(numPanels).keys()];
 
@@ -12,7 +13,10 @@ const ScrollablePanelMenu = ({ numPanels, activePanel, onClick }) => {
             <ul>
                 {
                     range.map((index) => (
-                        <li key={index} className={index === activePanel ? "selected" : ""}>
+                        <li key={index} className={ClassNames(
+                            index === activePanel ? "selected" : "",
+                            index === loadingPanel ? "loading" : ""
+                        )}>
                             <button onClick={() => { onClick(index) }} />
                         </li>
                     ))
@@ -25,12 +29,14 @@ const ScrollablePanelMenu = ({ numPanels, activePanel, onClick }) => {
 ScrollablePanelMenu.propTypes = {
     numPanels: PropTypes.number,
     activePanel: PropTypes.number,
+    loadingPanel: PropTypes.number,
     onClick: PropTypes.func,
 };
 
 ScrollablePanelMenu.defaultProps = {
     numPanels: 0,
     activePanel: null,
+    loadingPanel: null,
     onClick: () => {}
 };
 

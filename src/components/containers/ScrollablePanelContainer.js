@@ -8,9 +8,12 @@ import ScrollablePanelMenu from "./ScrollablePanelMenu";
 import "./css/scrollablePanelContainer.scss";
 
 const PANEL_LOADING_DELAY = 1250; // ms
+const DEBOUNCE_DELAY = 0; //ms
+let id;
 
 const ScrollablePanelsContainer = ({ children, withMenu }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [loadingPanel, setLoadingPanel] = useState(0);
     const [scrollIndex, setScrollIndex] = useState(0);
 
     useScrollPosition(({ prevPos, currPos }) => {
@@ -20,12 +23,18 @@ const ScrollablePanelsContainer = ({ children, withMenu }) => {
 
         if (newScrollIndex !== scrollIndex) {
             setIsLoading(true);
-            setTimeout(() => {
-                setScrollIndex(newScrollIndex);
-                setIsLoading(false)
+
+            if (newScrollIndex !== loadingPanel) {
+                clearTimeout(id);
+            }
+
+            setLoadingPanel(newScrollIndex);
+            id = setTimeout(() => {
+                setScrollIndex(loadingPanel);
+                setIsLoading(false);
             }, PANEL_LOADING_DELAY);
         }
-    }, [scrollIndex, isLoading]);
+    }, [id, scrollIndex, isLoading, loadingPanel], null, true, DEBOUNCE_DELAY);
 
     const getPanelClassName = (index, isLoading) => {
         const isCurrentPanel = index === scrollIndex;
@@ -45,6 +54,7 @@ const ScrollablePanelsContainer = ({ children, withMenu }) => {
                 <ScrollablePanelMenu
                     numPanels={children.length}
                     activePanel={scrollIndex}
+                    loadingPanel={loadingPanel}
                     onClick={(panelIndex) => { setScrollIndex(panelIndex); }}
                 />
             }
