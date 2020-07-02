@@ -1,5 +1,131 @@
 @import url(https://fonts.googleapis.com/css2?family=Anton&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Krona+One&display=swap);
+@keyframes stripe-gone {
+  from {
+    transform: scale(0); }
+  to {
+    transform: scale(0); } }
+
+@keyframes stripe-slidein-from-left {
+  from {
+    transform: translateX(-200vw); }
+  to {
+    transform: translateX(0); } }
+
+@keyframes stripe-slidein-from-right {
+  from {
+    transform: translateX(200vw); }
+  to {
+    transform: translateX(0); } }
+
+@keyframes stripe-slideout-to-left {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(200vw); } }
+
+@keyframes stripe-slideout-to-right {
+  from {
+    transform: translateX(0); }
+  to {
+    transform: translateX(-200vw); } }
+
+@keyframes stripe-widen {
+  from {
+    transform: scale(1, 0); }
+  to {
+    transform: scale(1, 1); } }
+
+@keyframes stripe-shrink {
+  from {
+    transform: scale(1, 1); }
+  to {
+    transform: scale(1, 0); } }
+
+@keyframes stripe-rotate-out {
+  from {
+    transform: rotate(0deg);
+    transform-origin: left; }
+  to {
+    transform: rotate(90deg);
+    transform-origin: left; } }
+
+@keyframes stripe-fly-up-and-in {
+  from {
+    transform: translateY(100vh);
+    transform-origin: bottom; }
+  to {
+    transform: translateY(0);
+    transform-origin: bottom; } }
+
+@keyframes stripe-fly-down-and-in {
+  from {
+    transform: translateY(-100vh);
+    transform-origin: bottom; }
+  to {
+    transform: translateY(0);
+    transform-origin: bottom; } }
+
+@keyframes stripe-fly-up-and-out {
+  from {
+    transform: translateY(0);
+    transform-origin: bottom; }
+  to {
+    transform: translateY(-100vh);
+    transform-origin: bottom; } }
+
+@keyframes stripe-fly-down-and-out {
+  from {
+    transform: translateY(0);
+    transform-origin: bottom; }
+  to {
+    transform: translateY(100vh);
+    transform-origin: bottom; } }
+
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+
+.scrollable-panel-menu {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 2; }
+  .scrollable-panel-menu ul {
+    display: flex;
+    flex-direction: row;
+    padding-inline-start: 0;
+    list-style: none;
+    margin: 0 auto; }
+    .scrollable-panel-menu ul li {
+      display: flex;
+      margin: 25px; }
+    .scrollable-panel-menu ul button {
+      margin: auto;
+      height: 25px;
+      width: 25px;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #FFFFEE; }
+    .scrollable-panel-menu ul button:focus {
+      outline: 0; }
+    .scrollable-panel-menu ul li.selected button {
+      animation: pulse-white 2s infinite;
+      transform: scale(1); }
+    .scrollable-panel-menu ul li.loading button {
+      height: 50px;
+      width: 50px; }
+
 .dummy-panel {
   height: 100vh;
   margin-bottom: 99vh; }
@@ -35,13 +161,13 @@
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(100vw) scaleX(0); } }
+    transform: translateX(200vw); } }
 
 @keyframes stripe-slideout-to-right {
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(-100vw) scaleX(0); } }
+    transform: translateX(-200vw); } }
 
 @keyframes stripe-widen {
   from {
@@ -73,7 +199,7 @@
 
 @keyframes stripe-fly-down-and-in {
   from {
-    transform: translateY(100vh);
+    transform: translateY(-100vh);
     transform-origin: bottom; }
   to {
     transform: translateY(0);
@@ -94,6 +220,17 @@
   to {
     transform: translateY(100vh);
     transform-origin: bottom; } }
+
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
 
 .aphex-container {
   position: relative;
@@ -124,7 +261,7 @@
   position: relative; }
 
 .aphex-stripe {
-  width: 200vw;
+  width: 250vw;
   height: 1.5rem;
   position: absolute;
   left: -100vw; }
@@ -194,31 +331,37 @@
   transform-origin: top; }
 
 /* Animating out */
-.fading-panel .aphex-header {
-  animation-name: stripe-fly-up-and-out;
-  animation-delay: 0s;
-  animation-duration: 1.5s; }
-
-.fading-panel .aphex-stripe {
-  animation-delay: 0s;
-  animation-duration: 1.5s; }
-  .fading-panel .aphex-stripe:nth-child(1) {
-    animation-name: stripe-fly-up-and-out; }
-  .fading-panel .aphex-stripe:nth-child(2) {
-    animation-name: stripe-fly-down-and-out;
-    animation-delay: 0.66667s; }
-  .fading-panel .aphex-stripe:nth-child(3) {
-    animation-name: stripe-fly-down-and-out;
-    animation-delay: 0.5s; }
-  .fading-panel .aphex-stripe:nth-child(4) {
-    animation-name: stripe-fly-down-and-out;
-    animation-delay: 0.33333s; }
-  .fading-panel .aphex-stripe:nth-child(5) {
-    animation-name: stripe-fly-down-and-out;
-    animation-delay: 0.16667s; }
-  .fading-panel .aphex-stripe:nth-child(6) {
-    animation-name: stripe-fly-down-and-out;
-    animation-delay: 0s; }
+.fading-panel {
+  animation-timing-function: linear; }
+  .fading-panel .aphex-header {
+    animation-name: stripe-fly-up-and-out;
+    animation-delay: 0s;
+    animation-duration: 1.25s; }
+  .fading-panel .aphex-stripe {
+    animation-duration: 1.25s; }
+    .fading-panel .aphex-stripe:nth-child(1) {
+      animation-name: stripe-fly-up-and-out;
+      animation-delay: 0s; }
+    .fading-panel .aphex-stripe:nth-child(2) {
+      animation-name: stripe-fly-down-and-out;
+      animation-delay: 0.66667s;
+      animation-duration: 0.58333s; }
+    .fading-panel .aphex-stripe:nth-child(3) {
+      animation-name: stripe-fly-down-and-out;
+      animation-delay: 0.5s;
+      animation-duration: 0.75s; }
+    .fading-panel .aphex-stripe:nth-child(4) {
+      animation-name: stripe-fly-down-and-out;
+      animation-delay: 0.33333s;
+      animation-duration: 0.91667s; }
+    .fading-panel .aphex-stripe:nth-child(5) {
+      animation-name: stripe-fly-down-and-out;
+      animation-delay: 0.16667s;
+      animation-duration: 1.08333s; }
+    .fading-panel .aphex-stripe:nth-child(6) {
+      animation-name: stripe-fly-down-and-out;
+      animation-delay: 0s;
+      animation-duration: 1.25s; }
 
 @keyframes stripe-gone {
   from {
@@ -242,13 +385,13 @@
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(100vw) scaleX(0); } }
+    transform: translateX(200vw); } }
 
 @keyframes stripe-slideout-to-right {
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(-100vw) scaleX(0); } }
+    transform: translateX(-200vw); } }
 
 @keyframes stripe-widen {
   from {
@@ -280,7 +423,7 @@
 
 @keyframes stripe-fly-down-and-in {
   from {
-    transform: translateY(100vh);
+    transform: translateY(-100vh);
     transform-origin: bottom; }
   to {
     transform: translateY(0);
@@ -302,15 +445,33 @@
     transform: translateY(100vh);
     transform-origin: bottom; } }
 
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+
 .supertape-container {
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   transform: rotate(-15deg); }
+  @media (max-width: 420px) {
+    .supertape-container {
+      padding-left: 1rem; } }
 
 .supertape-title {
   font-size: 3.7rem;
   color: #FFFFEE; }
+  @media (max-width: 420px) {
+    .supertape-title {
+      font-size: 3rem;
+      text-align: center; } }
 
 .supertape-subtitle {
   color: #E4BC07; }
@@ -325,7 +486,7 @@
   width: 200vw;
   height: 1rem;
   position: absolute;
-  left: -100vw; }
+  left: -50vw; }
   .supertape-stripe.red {
     background-color: #E12D36; }
   .supertape-stripe.green {
@@ -344,12 +505,19 @@
   top: 3rem;
   line-height: 1; }
   .supertape-footer-container .supertape-subtitle-t120 {
-    font-size: 2.5rem; }
+    font-size: 2.25rem; }
   .supertape-footer-container .supertape-subtitle-hour {
     padding-left: 0.5em;
     font-size: 1.5rem; }
+    @media (max-width: 420px) {
+      .supertape-footer-container .supertape-subtitle-hour {
+        padding-left: 0.25rem;
+        font-size: 1.1rem; } }
   .supertape-footer-container .supertape-footer {
     font-size: 2.55rem; }
+    @media (max-width: 420px) {
+      .supertape-footer-container .supertape-footer {
+        font-size: 1.9rem; } }
 
 /* Animating in */
 .current-panel:not(.fading-panel) .supertape-title {
@@ -370,7 +538,7 @@
   animation-name: stripe-gone, stripe-widen;
   animation-timing-function: ease;
   animation-delay: 0s, 1s;
-  animation-duration: 1s, 1s; }
+  animation-duration: 1s, 0.25s; }
 
 .current-panel:not(.fading-panel) .supertape-stripe:nth-child(1) {
   transform-origin: bottom; }
@@ -744,13 +912,13 @@ a {
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(100vw) scaleX(0); } }
+    transform: translateX(200vw); } }
 
 @keyframes stripe-slideout-to-right {
   from {
     transform: translateX(0); }
   to {
-    transform: translateX(-100vw) scaleX(0); } }
+    transform: translateX(-200vw); } }
 
 @keyframes stripe-widen {
   from {
@@ -782,7 +950,7 @@ a {
 
 @keyframes stripe-fly-down-and-in {
   from {
-    transform: translateY(100vh);
+    transform: translateY(-100vh);
     transform-origin: bottom; }
   to {
     transform: translateY(0);
@@ -804,6 +972,17 @@ a {
     transform: translateY(100vh);
     transform-origin: bottom; } }
 
+@keyframes pulse-white {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+
 .dynamicron-whitebox {
   display: flex;
   background: #FFFFFF;
@@ -818,7 +997,10 @@ a {
   margin: auto; }
 
 .dynamicron-header {
-  margin-left: 30vw; }
+  margin-left: 40vw; }
+  @media (max-width: 720px) {
+    .dynamicron-header {
+      margin-left: 1em; } }
 
 .dynamicron-title {
   font-size: 1.5rem;
@@ -832,8 +1014,12 @@ a {
   letter-spacing: -0.2rem; }
 
 .dynamicron-stripe {
+  color: #FFFFEE;
+  font-size: 1.5rem;
+  line-height: 2rem;
   height: 2rem;
-  width: 100vw; }
+  width: 100vw;
+  padding-left: 40vw; }
   .dynamicron-stripe.yellow {
     background-color: #F7AF02; }
   .dynamicron-stripe.red {
@@ -844,6 +1030,9 @@ a {
     background-color: #B90852; }
   .dynamicron-stripe.purple {
     background-color: #6B1B5A; }
+  @media (max-width: 720px) {
+    .dynamicron-stripe {
+      padding-left: 1em; } }
 
 /* Animating in */
 .current-panel:not(.fading-panel) .dynamicron-whitebox {
@@ -877,28 +1066,10 @@ a {
   animation-delay: 0s, 1s;
   animation-duration: 1s, 1s; }
 
-.fading-panel .dynamicron-stripe:nth-child(1) {
-  animation-name: stripe-gone, stripe-rotate-out;
-  animation-delay: 0s, 0.2s;
-  animation-duration: 0.2s, 1s; }
-
-.fading-panel .dynamicron-stripe:nth-child(2) {
-  animation-name: stripe-gone, stripe-rotate-out;
-  animation-delay: 0s, 0.4s;
-  animation-duration: 0.4s, 1s; }
-
-.fading-panel .dynamicron-stripe:nth-child(3) {
-  animation-name: stripe-gone, stripe-rotate-out;
-  animation-delay: 0s, 0.6s;
-  animation-duration: 0.6s, 1s; }
-
-.fading-panel .dynamicron-stripe:nth-child(4) {
-  animation-name: stripe-gone, stripe-rotate-out;
-  animation-delay: 0s, 0.8s;
-  animation-duration: 0.8s, 1s; }
-
-.fading-panel .dynamicron-stripe:nth-child(5) {
-  animation-name: stripe-gone, stripe-rotate-out;
-  animation-delay: 0s, 1s;
-  animation-duration: 1s, 1s; }
+/* Animating out */
+.fading-panel .dynamicron-whitebox {
+  animation-name: stripe-slideout-to-right;
+  animation-timing-function: linear;
+  transform-origin: left;
+  animation-duration: 1.25s; }
 
