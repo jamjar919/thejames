@@ -1,3 +1,4 @@
+@import "../../animations";
 
 .scrollable-panel-menu {
   display: flex;
@@ -38,15 +39,16 @@
 
     li.selected {
       button {
-        $buttonSize: 50px;
-        height: $buttonSize;
-        width: $buttonSize;
+        animation: pulse-white 2s infinite;
+        transform: scale(1);
       }
     }
 
     li.loading {
       button {
-        box-shadow: 0 0 10px 0 rgba(255,255,255,1);
+        $buttonSize: 50px;
+        height: $buttonSize;
+        width: $buttonSize;
       }
     }
 
