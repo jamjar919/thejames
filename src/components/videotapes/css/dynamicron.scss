@@ -1,4 +1,5 @@
 @import "src/components/animations";
+@import "src/components/variables";
 
 $stripePadding : 40vw;
 
@@ -19,6 +20,10 @@ $stripePadding : 40vw;
 
 .dynamicron-header {
     margin-left: $stripePadding;
+
+    @include below('tablet') {
+        margin-left: 1em;
+    }
 }
 
 .dynamicron-title {
@@ -47,6 +52,10 @@ $stripePadding : 40vw;
     &.crimson { background-color: #E7083F; }
     &.sunset { background-color: #B90852; }
     &.purple { background-color: #6B1B5A; }
+
+    @include below('tablet') {
+        padding-left: 1em;
+    }
 }
 
 $lines: 1, 2, 3, 4, 5;

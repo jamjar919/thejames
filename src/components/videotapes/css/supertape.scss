@@ -1,4 +1,5 @@
 @import "src/components/animations";
+@import "src/components/variables";
 
 $supertapeScale: 1rem;
 
@@ -7,11 +8,20 @@ $supertapeScale: 1rem;
   font-weight: 800;
   text-transform: uppercase;
   transform: rotate(-15deg);
+
+  @include below('mobile') {
+    padding-left: 1rem;
+  }
 }
 
 .supertape-title {
   font-size: 3.7rem;
   color: #FFFFEE;
+
+  @include below('mobile') {
+    font-size: 3rem;
+    text-align: center;
+  }
 }
 
 .supertape-subtitle {
@@ -30,7 +40,7 @@ $supertapeScale: 1rem;
   width: 200vw;
   height: $supertapeScale;
   position: absolute;
-  left: -100vw;
+  left: -50vw;
 
   &.red { background-color: #E12D36; }
   &.green { background-color: #94C637; }
@@ -50,16 +60,25 @@ $supertapeScale: 1rem;
   line-height: 1;
 
   .supertape-subtitle-t120 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .supertape-subtitle-hour {
     padding-left: 0.5em;
     font-size: 1.5rem;
+
+    @include below('mobile') {
+      padding-left: 0.25rem;
+      font-size: 1.1rem;
+    }
   }
 
   .supertape-footer {
     font-size: 2.55rem;
+
+    @include below('mobile') {
+      font-size: 1.9rem;
+    }
   }
 }
 

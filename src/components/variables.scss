@@ -1,23 +1,14 @@
 $background: #000000;
-$background-highlight: rgb(40, 44, 52);
 
-$foreground: #bdc3c7;
-$foreground-highlight: #ecf0f1;
+$breakpoints: (
+  'mobile':  420px,
+  'tablet': 720px
+) !default;
 
-$red: #e74c3c;
-$red-tint: #c0392b;
-
-$green: #2ecc71;
-$green-tint: #27ae60;
-
-$yellow: #f1c40f;
-$yellow-tint: #f39c12;
-
-$blue: #3498db;
-$blue-tint: #2980b9;
-
-$purple: #9b59b6;
-$purple-tint: #8e44ad;
-
-$aqua: #2aa198;
-$aqua-tint: #16a085;
+@mixin below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
