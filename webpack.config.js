@@ -23,6 +23,10 @@ module.exports = {
                     { loader: 'css-loader', options: { url: false, sourceMap: true } },
                     { loader: 'sass-loader', options: { sourceMap: true } }
                 ]
+            },
+            {
+                test: /\.svg$/i,
+                use: ['@svgr/webpack']
             }
         ]
     },
