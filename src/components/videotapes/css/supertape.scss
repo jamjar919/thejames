@@ -63,7 +63,7 @@ $supertapeScale: 1rem;
   line-height: 1;
 
   .supertape-subtitle-hour {
-    padding-left: 1em;
+    padding-left: .5em;
     font-size: 1.5rem;
 
     @include below('mobile') {

@@ -1,0 +1,49 @@
+
+.currently-listening {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 2.25rem;
+  height: 2.55rem;
+  width: 100%;
+  animation: appear .25s ease-in;
+
+  background-color: #FFFFEE;
+  color: #131216;
+  line-height: 2.55rem;
+
+  .currently-listening-scroller {
+    width: 100%;
+    margin: 0 .5em;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 8s linear infinite;
+
+    &:hover {
+      animation-play-state: paused
+    }
+  }
+
+  .currently-listening-album > img {
+    height: 2.55rem;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    text-indent: 100%
+  }
+  100% {
+    text-indent: -200%
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}

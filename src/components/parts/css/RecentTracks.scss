@@ -1,4 +1,34 @@
+.recent-tracks {
+  svg {
+    width: 35px;
+    height: 35px;
+    stroke: #E4BC07;
+  }
 
-.recent-tracks > svg {
-  width: 35px;
+  &.currently-listening-icon svg {
+    cursor: pointer;
+    stroke-dasharray: 10;
+    animation: whilstPlaying 10s linear infinite;
+
+    &:hover {
+      stroke-dasharray: 0;
+      animation: hoverRadio 1s ease-in;
+    }
+  }
+}
+
+@keyframes whilstPlaying {
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+
+@keyframes hoverRadio {
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    stroke-dasharray: 100;
+  }
 }
