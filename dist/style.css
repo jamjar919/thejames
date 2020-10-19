@@ -110,6 +110,7 @@
       margin: 25px; }
     .scrollable-panel-menu ul button {
       margin: auto;
+      padding: 0;
       height: 25px;
       width: 25px;
       display: inline-block;
@@ -508,7 +509,7 @@
   top: 3rem;
   line-height: 1; }
   .supertape-footer-container .supertape-subtitle-hour {
-    padding-left: 1em;
+    padding-left: .5em;
     font-size: 1.5rem; }
     @media (max-width: 420px) {
       .supertape-footer-container .supertape-subtitle-hour {
@@ -748,8 +749,63 @@
   transform-origin: left;
   animation-duration: 1.25s; }
 
-.recent-tracks > svg {
-  width: 35px; }
+.currently-listening {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 2.25rem;
+  height: 2.55rem;
+  width: 100%;
+  animation: appear .25s ease-in;
+  background-color: #FFFFEE;
+  color: #131216;
+  line-height: 2.55rem; }
+  .currently-listening .currently-listening-scroller {
+    width: 100%;
+    margin: 0 .5em;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 8s linear infinite; }
+    .currently-listening .currently-listening-scroller:hover {
+      animation-play-state: paused; }
+  .currently-listening .currently-listening-album > img {
+    height: 2.55rem; }
+
+@keyframes marquee {
+  0% {
+    text-indent: 100%; }
+  100% {
+    text-indent: -200%; } }
+
+@keyframes appear {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0); }
+  100% {
+    transform: scaleY(1); } }
+
+.recent-tracks svg {
+  width: 35px;
+  height: 35px;
+  stroke: #E4BC07; }
+
+.recent-tracks.currently-listening-icon svg {
+  cursor: pointer;
+  stroke-dasharray: 10;
+  animation: whilstPlaying 10s linear infinite; }
+  .recent-tracks.currently-listening-icon svg:hover {
+    stroke-dasharray: 0;
+    animation: hoverRadio 1s ease-in; }
+
+@keyframes whilstPlaying {
+  to {
+    stroke-dashoffset: 100; } }
+
+@keyframes hoverRadio {
+  50% {
+    transform: scale(1.1); }
+  100% {
+    stroke-dasharray: 100; } }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
