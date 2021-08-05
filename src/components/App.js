@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ScrollablePanelsContainer from "./containers/ScrollablePanelContainer";
+import PanelContainer from "./containers/PanelContainer";
 import Aphex from "./videotapes/Aphex";
 import Supertape from "./videotapes/Supertape";
 import Dynamicron from "./videotapes/Dynamicron";
@@ -15,7 +15,7 @@ const App = () => {
     const { tracks, loadingTracks } = useMusic();
 
     return (
-        <ScrollablePanelsContainer withMenu>
+        <PanelContainer withMenu>
             <Aphex
                 title="James"
                 subtitle="Paterson"
@@ -39,7 +39,7 @@ const App = () => {
                     </>
                 ]}
             />
-        </ScrollablePanelsContainer>
+        </PanelContainer>
     )
 };
 
