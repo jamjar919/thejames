@@ -52,7 +52,7 @@ const PanelContainer = ({ children, withMenu }) => {
                                 {child}
                             </div>
                         </div>
-                        {index !== children.length - 1 && <Squiggle/>}
+                        {index === 0 && <Squiggle/>}
                     </>
                 ))
             }

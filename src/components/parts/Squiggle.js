@@ -4,9 +4,7 @@ import './css/squiggle.scss';
 
 const Squiggle = () => {
     return (
-        <div className="squiggle-container">
-            <div className="squiggle" />
-        </div>
+        <div className="squiggle-container"></div>
     );
 }
 
