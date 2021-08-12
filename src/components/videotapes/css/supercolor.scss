@@ -1,4 +1,4 @@
-$scale: 4rem;
+$scale: 5rem;
 
 .supercolor-container {
   display: flex;
@@ -8,11 +8,15 @@ $scale: 4rem;
   color: #121415;
   flex-direction: column;
   font-family: 'Helvetica', 'Arial', sans-serif;
+
+  strong {
+    font-weight: 600;
+  }
 }
 
 .supercolor-header {
   width: 30%;
-  margin: auto;
+  margin: auto auto 0 auto;
   text-align: right;
 }
 
@@ -38,7 +42,7 @@ $scale: 4rem;
 .supercolor-main {
   display: flex;
   flex-direction: row;
-  margin: auto 0;
+  margin: 4rem 0 auto 0;
 }
 
 .supercolor-stripes,  {
@@ -47,6 +51,12 @@ $scale: 4rem;
 
 .supercolor-content {
   flex: 1 1;
+  padding: 1em;
+  font-size: 1.5rem;
+
+  h3 {
+    margin-top: 0;
+  }
 }
 
 .supercolor-stripe {
