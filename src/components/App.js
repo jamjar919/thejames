@@ -4,6 +4,7 @@ import PanelContainer from "./containers/PanelContainer";
 import Aphex from "./videotapes/Aphex";
 import Supertape from "./videotapes/Supertape";
 import Dynamicron from "./videotapes/Dynamicron";
+import SuperColor from "./videotapes/SuperColor";
 import RecentTracks from "./parts/RecentTracks";
 
 import useMusic from "../hooks/useMusic";
@@ -19,6 +20,13 @@ const App = () => {
             <Aphex
                 title="James"
                 subtitle="Paterson"
+            />
+            <SuperColor
+                title="About"
+                subtitle="shameless plug"
+                content={
+                    <p>Example text</p>
+                }
             />
             <Supertape
                 title="Developer"
@@ -40,7 +48,7 @@ const App = () => {
                 ]}
             />
         </PanelContainer>
-    )
+    );
 };
 
 export default App;
