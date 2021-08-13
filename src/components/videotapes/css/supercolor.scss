@@ -1,3 +1,6 @@
+@import "src/components/variables";
+@import "src/components/animations";
+
 $scale: 5rem;
 
 .supercolor-container {
@@ -8,6 +11,11 @@ $scale: 5rem;
   color: #121415;
   flex-direction: column;
   font-family: 'Helvetica', 'Arial', sans-serif;
+  overflow: hidden;
+
+  @include below('tablet') {
+    height: auto;
+  }
 
   strong {
     font-weight: 600;
@@ -18,15 +26,28 @@ $scale: 5rem;
   width: 30%;
   margin: auto auto 0 auto;
   text-align: right;
+
+  @include below('tablet') {
+    margin-top: 0.75em;
+    width: 80%;
+  }
 }
 
 .supercolor-title {
   font-size: 5rem;
   margin: 0;
+
+  @include below('tablet') {
+    padding-right: 1rem;
+  }
 }
 
 .supercolor-subtitle {
   margin: .5rem 0 0 0;
+
+  @include below('tablet') {
+    display: none;
+  }
 }
 
 .supercolor-top-strip-container {
@@ -43,16 +64,50 @@ $scale: 5rem;
   display: flex;
   flex-direction: row;
   margin: 4rem 0 auto 0;
+
+  @include below('tablet') {
+    margin: 2rem;
+  }
+
+  @include below('mobile') {
+    margin: 1rem;
+  }
 }
 
-.supercolor-stripes,  {
-  flex: 1.2 1;
+.supercolor-stripes {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+
+  @include below('tablet') {
+    display: none;
+  }
 }
 
 .supercolor-content {
   flex: 1 1;
-  padding: 1em;
+  padding: 0 3em 0 1em;
   font-size: 1.5rem;
+  max-width: 800px;
+  margin-right: auto;
+
+  @include below('mobile') {
+    font-size: 1.25rem;
+    padding: 1em;
+    overflow: scroll
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  p {
+    line-height: 1.5;
+  }
 
   h3 {
     margin-top: 0;
@@ -60,10 +115,25 @@ $scale: 5rem;
 }
 
 .supercolor-stripe {
+  display: flex;
   height: $scale;
+
+  &:first-child {
+    margin-top: auto;
+  }
+
+  &:last-child {
+    margin-bottom: auto;
+  }
 }
 
+.supercolor-stripe-content {
+  margin: auto 0 auto auto;
+  padding-right: 2rem;
 
+  color: #000;
+  font-size: 1.5em;
+}
 
 .supercolor-top-strip {
   &.red { background-color: #E12D36; }
@@ -77,4 +147,23 @@ $scale: 5rem;
   &.yellow { background-color: #faed51; }
   &.orange { background-color: #cc482b; }
   &.red { background-color: #c02c58; }
+}
+
+$slideInDuration: 1;
+$lines: 1, 2, 3, 4, 5;
+
+/* Animating in */
+.current-panel:not(.fading-panel) {
+  @each $n in $lines {
+  .supercolor-stripe {
+      &:nth-child(#{$n}) {
+        $delay: ($n * 1/5);
+
+        animation-name: stripe-slidein-from-left;
+        animation-delay: 0s, #{$delay}s;
+        animation-duration: #{$delay}s, 0.5s;
+        transform-origin: left;
+      }
+    }
+  }
 }

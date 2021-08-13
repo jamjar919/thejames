@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
-
+import {useScrollPosition} from "@n8tb1t/use-scroll-position";
 import ScrollablePanelMenu from "./ScrollablePanelMenu";
 
 import "./css/panelContainer.scss";
-import {useScrollPosition} from "@n8tb1t/use-scroll-position";
-import Squiggle from "../parts/Squiggle";
 
 const DOCUMENT_HEIGHT = window.innerHeight;
 
@@ -24,7 +22,7 @@ const PanelContainer = ({ children, withMenu }) => {
         }
     };
 
-    useScrollPosition(({prevPos, currPos}) => {
+    useScrollPosition(({currPos}) => {
         const scrollPos = -1 * currPos.y;
         const newScrollIndex = Math.floor(Math.abs(scrollPos / DOCUMENT_HEIGHT));
 
@@ -36,18 +34,19 @@ const PanelContainer = ({ children, withMenu }) => {
     return (
         <>
             {withMenu &&
-            <ScrollablePanelMenu
-                numPanels={children.length}
-                activePanel={scrollIndex}
-                onClick={(panelIndex) => {
-                    switchToPanel(panelIndex);
-                }}
-            />
+                <ScrollablePanelMenu
+                    numPanels={children.length}
+                    activePanel={scrollIndex}
+                    onClick={(panelIndex) => {
+                        switchToPanel(panelIndex);
+                    }}
+                />
             }
             {
+                /* Includes stupid hack to fix text overflowing in SuperColor */
                 React.Children.map(children, (child, index) => (
                     <>
-                        <div className={ClassNames("fullpage", "panel", "current-panel")}>
+                        <div className={ClassNames(index !== 1 && "fullpage", "panel", "current-panel")}>
                             <div className="centeredContainer">
                                 {child}
                             </div>

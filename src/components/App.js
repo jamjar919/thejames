@@ -23,14 +23,14 @@ const App = () => {
             />
             <SuperColor
                 title="About"
-                subtitle="shameless plug"
+                subtitle="bit of a shameless plug"
                 content={
                     <>
                         <h3>Hiya!</h3>
                         <p>
                             I'm James, a full stack web developer living in Oxford, UK.
                             My areas of expertise are <strong>React</strong>, <strong>Typescript</strong>, <strong>SCSS</strong>, <strong>Responsive Web Design</strong>, and working with <strong>asynchronous Javascript</strong>.
-                            I've also worked with plenty of backend tech like Node, Java Spring, PHP, and more. Check out my <a href={"https://github.com/jamjar919"} target="_blank">Github</a> for examples of things that I've built in the past.
+                            I've also worked with plenty of backend tech like Node, Java Spring, PHP, and more. Check out my <a href={"https://github.com/jamjar919"} target="_blank">Github</a> and for examples of things that I've built in the past.
                         </p>
                         <p>
                             I'm currently working at Tripadvisor Experiences. You can find links to my CV and LinkedIn
@@ -38,6 +38,12 @@ const App = () => {
                         </p>
                     </>
                 }
+                stripes={[
+               /*     <div>EffBee Analyser</div>,
+                    <div>Spotify Graph Explorer</div>,
+                    <div>FeelFit Gym Member Count</div>,
+                    <div>Julia Set Viewer</div> */
+                ]}
             />
             <Supertape
                 title="Developer"
