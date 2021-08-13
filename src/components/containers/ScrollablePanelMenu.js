@@ -14,10 +14,15 @@ const ScrollablePanelMenu = ({ numPanels, activePanel, loadingPanel, onClick }) 
                 {
                     range.map((index) => (
                         <li key={index} className={ClassNames(
+                            "panel-selector",
                             index === activePanel ? "selected" : "",
                             index === loadingPanel ? "loading" : ""
                         )}>
-                            <button onClick={() => { onClick(index) }} />
+                            <button
+                                aria-roledescription={`Scroll to panel`}
+                                aria-label={`Swap to panel ${index + 1}`}
+                                onClick={() => { onClick(index) }}
+                            />
                         </li>
                     ))
                 }
